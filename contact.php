@@ -1,19 +1,8 @@
-<?php
-include 'functions.php';
-if (isset($_GET['id'])) {
-    $product = getProductById($_GET['id']);
-    if (!$product) {
-        die("Produk tidak ditemukan.");
-    }
-} else {
-    die("ID produk tidak disediakan.");
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Detail Produk - Rusdi Partz</title>
+    <title>Kontak - Rusdi Partz</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -39,18 +28,33 @@ if (isset($_GET['id'])) {
         </div>
     </header>
     <div class="container my-5">
-        <div class="row">
-            <div class="col-md-6">
-                <img src="<?php echo $product->image; ?>" class="img-fluid" alt="<?php echo $product->name; ?>">
+        <h1 class="text-center">Kontak Kami</h1>
+        <p class="text-center">Jika Anda memiliki pertanyaan atau ingin menghubungi kami, silakan isi formulir di bawah ini.</p>
+        <form action="contact.php" method="post">
+            <div class="form-group">
+                <label for="name">Nama:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
             </div>
-            <div class="col-md-6">
-                <h2><?php echo $product->name; ?></h2>
-                <p class="text-muted">Kategori: <?php echo $product->category; ?></p>
-                <h4 class="text-primary">Rp <?php echo number_format($product->price, 2); ?></h4>
-                <p><?php echo $product->detail; // Assuming the product class has a description field ?></p>
-                <button class="btn btn-success add-to-cart" data-product-id="<?php echo $product->id; ?>">Tambah ke Keranjang</button>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
             </div>
-        </div>
+            <div class="form-group">
+                <label for="message">Pesan:</label>
+                <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Kirim</button>
+        </form>
+        <?php
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $name = htmlspecialchars($_POST['name']);
+            $email = htmlspecialchars($_POST['email']);
+            $message = htmlspecialchars($_POST['message']);
+            
+            // Proses pesan (misalnya, simpan ke file atau kirim email)
+            echo '<p class="text-success mt-4">Terima kasih, ' . $name . '! Pesan Anda telah diterima.</p>';
+        }
+        ?>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>

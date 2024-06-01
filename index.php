@@ -41,6 +41,7 @@ $products = getAllProducts();
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $product->name; ?></h5>
                             <p class="card-text">Kategori: <?php echo $product->category; ?></p>
+                            <P cLass="card-text"><?php echo $product->detail; ?></p>
                             <p class="card-text">Harga: Rp <?php echo number_format($product->price, 2); ?></p>
                             <a href="product.php?id=<?php echo $product->id; ?>" class="btn btn-primary">Detail</a>
                             <button class="btn btn-success add-to-cart" data-product-id="<?php echo $product->id; ?>">Tambah ke Keranjang</button>
