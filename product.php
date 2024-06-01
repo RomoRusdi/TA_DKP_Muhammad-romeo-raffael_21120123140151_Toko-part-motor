@@ -47,7 +47,7 @@ if (isset($_GET['id'])) {
                 <h2><?php echo $product->name; ?></h2>
                 <p class="text-muted">Kategori: <?php echo $product->category; ?></p>
                 <h4 class="text-primary">Rp <?php echo number_format($product->price, 2); ?></h4>
-                <p><?php echo $product->detail; // Assuming the product class has a description field ?></p>
+                <p><?php echo $product->detail;  ?></p>
                 <button class="btn btn-success add-to-cart" data-product-id="<?php echo $product->id; ?>">Tambah ke Keranjang</button>
             </div>
         </div>

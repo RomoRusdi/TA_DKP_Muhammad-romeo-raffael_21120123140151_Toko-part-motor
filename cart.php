@@ -34,9 +34,9 @@ $cartProducts = getProductsInCart();
     </header>
     <div class="container my-5">
         <h1 class="text-center">Keranjang Belanja</h1>
-        <?php if (empty($cartProducts)): ?>
+        <?php if (empty($cartProducts)): ?> 
             <p class="text-center">Keranjang belanja Anda kosong.</p>
-        <?php else: ?>
+        <?php else: ?> 
             <table class="table table-bordered">
                 <thead class="thead-light">
                     <tr>
@@ -48,7 +48,7 @@ $cartProducts = getProductsInCart();
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $total = 0; ?>
+                    <?php $total = 0; ?> 
                     <?php foreach ($cartProducts as $item): ?>
                         <?php
                             $subtotal = $item['product']->price * $item['quantity'];
